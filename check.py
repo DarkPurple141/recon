@@ -3,7 +3,7 @@ import sys
 import hashlib
 
 def main():
-    if len(sys.argv) <= 2:
+    if len(sys.argv) < 2:
         print("Usage: python %s subdomain" % (__file__))
         print("e.g.: python %s something.ns.agency" % (__file__))
         exit(-1)
@@ -11,6 +11,8 @@ def main():
         print (arg)
         subdomain = arg
         check_pwd(subdomain)
+
+    exit(0)
 
 
 min_len = 50
