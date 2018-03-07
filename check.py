@@ -3,12 +3,14 @@ import sys
 import hashlib
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) <= 2:
         print("Usage: python %s subdomain" % (__file__))
         print("e.g.: python %s something.ns.agency" % (__file__))
         exit(-1)
-    subdomain = sys.argv[1]
-    check_pwd(subdomain)
+    for arg in sys.argv[1:]:
+        print (arg)
+        subdomain = arg
+        check_pwd(subdomain)
 
 
 min_len = 50
@@ -33,10 +35,11 @@ def check_pwd(fulldomain):
         if hashed in hashes:
             print(f"Valid subdomain in {category} category")
             print(hashed)
-            exit(0)
-    print("Subdomain not found")
+            break
+            # exit(0)
+    else:
+        print("Subdomain not found")
 
 
 if __name__ == "__main__":
     main()
-
